@@ -1,5 +1,6 @@
 import Card from '../shared/Card';
 import Button from '../shared/Button';
+import Rating from './Rating';
 import { useState } from 'react';
 
 const FeedBackForm = () => {
@@ -26,6 +27,7 @@ const FeedBackForm = () => {
         <h2 style={{ fontWeight: '800' }}>
           How Would You Rate your service With Us?
         </h2>
+        <Rating select={(rating) => setRating(rating)} />
         <div className="input-group">
           <input
             type="text"
