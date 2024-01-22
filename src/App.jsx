@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
+//uuid gives as a random ID
 import Header from './component/Header';
-// import FeedbackItem from './component/FeedbackItem';
 import FeedbackData from './data/FeedbackData';
 import FeedbackList from './component/FeedbackList';
 import FeedBackstat from './component/FeedBackstat';
@@ -17,11 +18,16 @@ function App() {
       setFeedback(feedback.filter((item) => item.id !== id));
     }
   };
+
+  const addFeedback = (newFeedback) => {
+    newFeedback.id = uuidv4;
+    setFeedback([newFeedback, ...feedback]);
+  };
   return (
     <>
       <Header />
       <div className="container">
-        <FeedBackForm />
+        <FeedBackForm handleAdd={addFeedback} />
         <FeedBackstat feedback={feedback} />
         <FeedbackList feedback={feedback} handleDelete={deleteFeedback} />
       </div>

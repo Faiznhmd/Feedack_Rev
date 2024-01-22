@@ -3,7 +3,7 @@ import Button from '../shared/Button';
 import Rating from './Rating';
 import { useState } from 'react';
 
-const FeedBackForm = () => {
+const FeedBackForm = ({ handleAdd }) => {
   const [text, setText] = useState('');
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState('');
@@ -21,9 +21,21 @@ const FeedBackForm = () => {
     }
     setText(e.target.value);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (text.trim().length > 10) {
+      const newFeedback = {
+        text,
+        rating,
+      };
+      handleAdd(newFeedback);
+      setText('');
+    }
+  };
   return (
     <Card>
-      <form>
+      <form onSubmit={handleSubmit}>
         <h2 style={{ fontWeight: '800' }}>
           How Would You Rate your service With Us?
         </h2>
