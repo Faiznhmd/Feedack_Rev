@@ -1,5 +1,9 @@
+// import FeedbackContext from '../context/FeedbackContext';
+// import { useContext } from 'react';
+
 const FeedBackstat = ({ feedback }) => {
   //Calculate Rating
+  // const { feedback } = useContext(FeedbackContext);
   let average =
     feedback.reduce((acc, cur) => {
       return acc + cur.rating;
